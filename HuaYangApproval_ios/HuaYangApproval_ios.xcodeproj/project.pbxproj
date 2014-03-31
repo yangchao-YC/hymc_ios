@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BA4439018E997C500134FF1 /* DynamicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4438F18E997C500134FF1 /* DynamicCell.xib */; };
 		5B4951B4033043FB9020BA3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3142D1299C2A44C5AD41F132 /* libPods.a */; };
 		6E809D6218E3EFB000511F53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E809D6118E3EFB000511F53 /* Foundation.framework */; };
 		6E809D6418E3EFB000511F53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E809D6318E3EFB000511F53 /* CoreGraphics.framework */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		3142D1299C2A44C5AD41F132 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BA4438F18E997C500134FF1 /* DynamicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicCell.xib; sourceTree = "<group>"; };
 		4E3CA5EBB4E94571A05674E9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6E809D5E18E3EFB000511F53 /* HuaYangApproval_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuaYangApproval_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E809D6118E3EFB000511F53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -118,6 +120,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BA4439118E9A27F00134FF1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		6E809D5518E3EFB000511F53 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +208,7 @@
 		6E809D9618E3F4CE00511F53 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3BA4439118E9A27F00134FF1 /* Utils */,
 				6EA8CA1E18E946DE003267E4 /* Models */,
 				6EA8CA0D18E92340003267E4 /* Cells */,
 				6EA8CA0C18E9232B003267E4 /* ViewControllers */,
@@ -239,6 +249,7 @@
 			children = (
 				6EA8CA0E18E9236A003267E4 /* DynamicCell.h */,
 				6EA8CA0F18E9236A003267E4 /* DynamicCell.m */,
+				3BA4438F18E997C500134FF1 /* DynamicCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -346,6 +357,7 @@
 				6E809D6C18E3EFB000511F53 /* InfoPlist.strings in Resources */,
 				6EA8CA1D18E9436D003267E4 /* test.txt in Resources */,
 				6E809D7518E3EFB000511F53 /* Main.storyboard in Resources */,
+				3BA4439018E997C500134FF1 /* DynamicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

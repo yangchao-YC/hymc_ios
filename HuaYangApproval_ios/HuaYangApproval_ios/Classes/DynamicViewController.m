@@ -72,6 +72,9 @@
 {
     static NSString *dynamicCellId = @"DynamicCell";
     DynamicCell *cell = [tableView dequeueReusableCellWithIdentifier:dynamicCellId];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:dynamicCellId owner:self options:nil] lastObject];
+    }
     
     DynamicModel *dynamicModel = [self.dynamicDataArray objectAtIndex:indexPath.row];
     [cell setDynamicData:dynamicModel];
@@ -83,7 +86,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150.0f;
+    DynamicCell *cell = (DynamicCell *)[self tableView:self.dynamicTableView cellForRowAtIndexPath:indexPath];
+    return [cell height];
 }
 
 

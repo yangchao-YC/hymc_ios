@@ -11,9 +11,10 @@
 #import "ReplyModel.h"
 
 @implementation DynamicModel
-- (id)initWithDictionary:(NSDictionary *)dataDic
+- (id)initWithDictionary:(NSDictionary *)dataDic weiboType:(NSString *)weiboType_
 {
     if (self=[super init]) {
+        self.weiboType =    weiboType_;
         self.dataid =       [dataDic objectForKey:@"dataid"];
         self.upicture =     [dataDic objectForKey:@"upicture"];
         self.uid =          [dataDic objectForKey:@"uid"];
@@ -31,7 +32,7 @@
         NSArray *replys_ = [dataDic objectForKey:@"replys"];
         for (int i=0; i<replys_.count; i++) {
             NSDictionary *reply_ = [replys_ objectAtIndex:i];
-            ReplyModel *replyModel = [[ReplyModel alloc] initWithDictionary:reply_];
+            ReplyModel *replyModel = [[ReplyModel alloc] initWithDictionary:reply_ dynamicid:self.dataid];
             [self.replys addObject:replyModel];
         }
         
@@ -39,7 +40,7 @@
         NSArray *files_ = [dataDic objectForKey:@"files"];
         for (int i=0; i<files_.count; i++) {
             NSDictionary *file_ = [files_ objectAtIndex:i];
-            FileModel *fileModel = [[FileModel alloc] initWithDictionary:file_];
+            FileModel *fileModel = [[FileModel alloc] initWithDictionary:file_ dataid:self.dataid];
             [self.files addObject:fileModel];
         }
     }

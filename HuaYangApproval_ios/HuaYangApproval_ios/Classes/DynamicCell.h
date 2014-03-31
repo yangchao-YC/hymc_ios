@@ -20,4 +20,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnPraise;
 
 - (void)setDynamicData:(DynamicModel *)dynamicModel;
+- (CGFloat)height;
 @end

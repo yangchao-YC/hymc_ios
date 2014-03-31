@@ -9,9 +9,10 @@
 #import "FileModel.h"
 
 @implementation FileModel
-- (id)initWithDictionary:(NSDictionary *)dataDic
+- (id)initWithDictionary:(NSDictionary *)dataDic dataid:(NSString *)dataid_
 {
     if (self=[super init]) {
+        self.dataid =     dataid_;
         self.filename =   [dataDic objectForKey:@"filename"];
         self.href =       [dataDic objectForKey:@"href"];
     }

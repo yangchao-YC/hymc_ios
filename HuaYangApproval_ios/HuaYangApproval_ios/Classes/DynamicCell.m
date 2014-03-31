@@ -13,6 +13,11 @@
 
 @implementation DynamicCell
 
+- (CGFloat)height
+{
+    return 90.0f + self.contentRTLabel.optimumSize.height + 5;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -35,20 +40,6 @@
 
     // Configure the view for the selected state
 }
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    CGSize optimumSize = [self.contentRTLabel optimumSize];
-	CGRect frame = [self.contentRTLabel frame];
-	frame.size.height = optimumSize.height; // +5 to fix height issue, this should be automatically fixed in iOS5
-	[self.contentRTLabel setFrame:frame];
-    
-    CGFloat height = self.contentRTLabel.frame.size.height;
-    self.btnForwarding.frame = CGRectMake(self.btnForwarding.frame.origin.x, 55 + height, self.btnForwarding.frame.size.width, self.btnForwarding.frame.size.height);
-    self.btnPraise.frame = CGRectMake(self.btnPraise.frame.origin.x, 55 + height, self.btnPraise.frame.size.width, self.btnPraise.frame.size.height);
-    self.btnReply.frame = CGRectMake(self.btnReply.frame.origin.x, 55 + height, self.btnReply.frame.size.width, self.btnReply.frame.size.height);
-}
 
 - (void)setDynamicData:(DynamicModel *)dynamicModel
 {
@@ -56,9 +47,15 @@
     self.dateTimeLabel.text = [dynamicModel.dateTime stringValue];
     self.contentRTLabel.text = dynamicModel.content;//[self transformString:dynamicModel.content];
     
- 
-    [self layoutSubviews];
-    [self layoutIfNeeded];
+    CGSize optimumSize = [self.contentRTLabel optimumSize];
+	CGRect frame = [self.contentRTLabel frame];
+	frame.size.height = optimumSize.height;
+	[self.contentRTLabel setFrame:frame];
+    
+    CGFloat height = self.contentRTLabel.frame.size.height;
+    self.btnForwarding.frame = CGRectMake(self.btnForwarding.frame.origin.x, 60 + height, self.btnForwarding.frame.size.width, self.btnForwarding.frame.size.height);
+    self.btnPraise.frame = CGRectMake(self.btnPraise.frame.origin.x, 60 + height, self.btnPraise.frame.size.width, self.btnPraise.frame.size.height);
+    self.btnReply.frame = CGRectMake(self.btnReply.frame.origin.x, 60 + height, self.btnReply.frame.size.width, self.btnReply.frame.size.height);
 }
 
 - (NSString *)transformString:(NSString *)originalStr
@@ -84,8 +81,6 @@
         
         i++;
     }
-    
-    NSLog(@"%@",text);
     
     //NSString *text = originalStr;
     /*

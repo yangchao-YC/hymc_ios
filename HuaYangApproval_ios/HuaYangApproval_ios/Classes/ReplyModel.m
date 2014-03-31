@@ -10,9 +10,10 @@
 #import "FileModel.h"
 
 @implementation ReplyModel
-- (id)initWithDictionary:(NSDictionary *)dataDic
+- (id)initWithDictionary:(NSDictionary *)dataDic dynamicid:(NSString *)dynamicid_
 {
     if (self=[super init]) {
+        self.dynamicid = dynamicid_;
         self.dataid =   [dataDic objectForKey:@"dataid"];
         self.upicture = [dataDic objectForKey:@"upicture"];
         self.uid =      [dataDic objectForKey:@"uid"];
@@ -24,7 +25,7 @@
         NSArray *files_ = [dataDic objectForKey:@"files"];
         for (int i=0; i<files_.count; i++) {
             NSDictionary *file_ = [files_ objectAtIndex:i];
-            FileModel *fileModel = [[FileModel alloc] initWithDictionary:file_];
+            FileModel *fileModel = [[FileModel alloc] initWithDictionary:file_ dataid:self.dataid];
             [self.files addObject:fileModel];
         }
     }

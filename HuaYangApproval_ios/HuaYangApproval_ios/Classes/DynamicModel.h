@@ -10,6 +10,10 @@
 
 @interface DynamicModel : NSObject
 
+//本地缓存需要用到的字段
+@property(strong,nonatomic)NSNumber *ID;
+@property(strong,nonatomic)NSString *weiboType;   //微博类型 allmsg:动态更新，mymsg:我的动态，followmsg：我关注的动态
+
 @property(strong,nonatomic)NSString *dataid;      //微博uuid
 @property(strong,nonatomic)NSString *upicture;    //发布微博用户头像
 @property(strong,nonatomic)NSString *uid;         //发布微博的人员uuid
@@ -28,5 +32,5 @@
 @property(strong,nonatomic)NSMutableArray *replys;//回复数组
 @property(strong,nonatomic)NSMutableArray *files; //文件数组
 
-- (id)initWithDictionary:(NSDictionary *)dataDic;
+- (id)initWithDictionary:(NSDictionary *)dataDic weiboType:(NSString *)weiboType_;
 @end
