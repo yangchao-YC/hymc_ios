@@ -10,4 +10,10 @@
 
 @interface DatabaseManager : NSObject
 
+//保存动态列表
++ (void)saveDynamicList:(NSArray *)dynamicList;
+
+//通过微博类型查询动态列表
++ (id)getDynamicListByWeiboType:(NSString *)weiboType_;
+
 @end

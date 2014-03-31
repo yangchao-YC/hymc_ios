@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3BA4439018E997C500134FF1 /* DynamicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4438F18E997C500134FF1 /* DynamicCell.xib */; };
+		3BA4439418E9A2B100134FF1 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4439318E9A2B100134FF1 /* DatabaseManager.m */; };
 		5B4951B4033043FB9020BA3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3142D1299C2A44C5AD41F132 /* libPods.a */; };
 		6E809D6218E3EFB000511F53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E809D6118E3EFB000511F53 /* Foundation.framework */; };
 		6E809D6418E3EFB000511F53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E809D6318E3EFB000511F53 /* CoreGraphics.framework */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		3142D1299C2A44C5AD41F132 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA4438F18E997C500134FF1 /* DynamicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicCell.xib; sourceTree = "<group>"; };
+		3BA4439218E9A2B100134FF1 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		3BA4439318E9A2B100134FF1 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		4E3CA5EBB4E94571A05674E9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6E809D5E18E3EFB000511F53 /* HuaYangApproval_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuaYangApproval_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E809D6118E3EFB000511F53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +126,8 @@
 		3BA4439118E9A27F00134FF1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3BA4439218E9A2B100134FF1 /* DatabaseManager.h */,
+				3BA4439318E9A2B100134FF1 /* DatabaseManager.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				6E809DA218E3F55A00511F53 /* NewsViewController.m in Sources */,
 				6E809DA818E400CF00511F53 /* NewDynamicViewController.m in Sources */,
 				6EA8CA1018E9236A003267E4 /* DynamicCell.m in Sources */,
+				3BA4439418E9A2B100134FF1 /* DatabaseManager.m in Sources */,
 				6E809DA518E3F58100511F53 /* MineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

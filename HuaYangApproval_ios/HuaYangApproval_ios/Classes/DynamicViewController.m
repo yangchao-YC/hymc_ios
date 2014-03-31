@@ -9,6 +9,7 @@
 #import "DynamicViewController.h"
 #import "DynamicModel.h"
 #import "DynamicCell.h"
+#import "DatabaseManager.h"
 
 @interface DynamicViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
 @property(strong,nonatomic)NSMutableArray *dynamicDataArray;
@@ -34,10 +35,16 @@
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"]];
     id a = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     self.dynamicDataArray = [NSMutableArray array];
-    for (int i=0; i<10; i++) {
-        DynamicModel *dynamicModel = [[DynamicModel alloc] initWithDictionary:[[a objectForKey:@"weiboList"] objectAtIndex:0]];
+    
+    NSArray *weiboList = [a objectForKey:@"weiboList"];
+    
+    for (int i=0; i<weiboList.count; i++) {
+        DynamicModel *dynamicModel = [[DynamicModel alloc] initWithDictionary:[weiboList objectAtIndex:i] weiboType:@"allmsg"];
         [self.dynamicDataArray addObject:dynamicModel];
     }
+    
+    //网络请求成功后，缓存数据
+    [DatabaseManager saveDynamicList:self.dynamicDataArray];
     
     [self.dynamicTableView reloadData];
 }
