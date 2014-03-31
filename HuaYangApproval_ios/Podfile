@@ -1,0 +1,6 @@
+platform :ios,'7.0'
+pod 'AFNetworking', '~> 1.3.3'
+pod 'FMDB', '~> 2.2'
+pod 'SDWebImage', '~> 3.5.2'
+pod 'RegexKitLite', '~> 4.0'
+pod 'TSPopover', '~> 0.1.0'
