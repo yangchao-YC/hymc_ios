@@ -8,6 +8,8 @@
 
 #import "ReplyModel.h"
 #import "FileModel.h"
+#import "FMResultSet.h"
+#import "DatabaseManager.h"
 
 @implementation ReplyModel
 - (id)initWithDictionary:(NSDictionary *)dataDic dynamicid:(NSString *)dynamicid_
@@ -28,6 +30,23 @@
             FileModel *fileModel = [[FileModel alloc] initWithDictionary:file_ dataid:self.dataid];
             [self.files addObject:fileModel];
         }
+    }
+    
+    return self;
+}
+
+- (id)initWithFMResultSet:(id)rs
+{
+    if (self=[super init]) {
+        self.dynamicid = [rs objectForColumnName:@"dynamicid"];
+        self.dataid =    [rs objectForColumnName:@"dataid"];
+        self.upicture =  [rs objectForColumnName:@"upicture"];
+        self.uid =       [rs objectForColumnName:@"uid"];
+        self.uname =     [rs objectForColumnName:@"uname"];
+        self.content =   [rs objectForColumnName:@"content"];
+        self.dateTime =  [rs objectForColumnName:@"dateTime"];
+        
+        self.files = [DatabaseManager getFileListByDataID:self.dataid];
     }
     
     return self;

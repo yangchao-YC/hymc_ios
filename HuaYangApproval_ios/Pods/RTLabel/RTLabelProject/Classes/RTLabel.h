@@ -54,7 +54,7 @@ typedef enum
 }RTTextLineBreakMode;
 
 @protocol RTLabelDelegate <NSObject>
-- (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL*)url;
+- (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSString *)urlString;
 @end
 
 @interface RTLabel : UIView

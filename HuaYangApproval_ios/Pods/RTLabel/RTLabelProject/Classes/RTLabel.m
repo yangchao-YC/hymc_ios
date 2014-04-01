@@ -39,7 +39,7 @@
 
 @interface RTLabelButton : UIButton
 @property (nonatomic, assign) int componentIndex;
-@property (nonatomic) NSURL *url;
+@property (nonatomic) NSString *urlString;
 @end
 
 @implementation RTLabelButton
@@ -347,7 +347,7 @@
 					[button setBackgroundColor:[UIColor colorWithWhite:0 alpha:0]];
 					[button setComponentIndex:linkableComponents.componentIndex];
 					
-					[button setUrl:[NSURL URLWithString:[linkableComponents.attributes objectForKey:@"href"]]];
+					[button setUrlString:[linkableComponents.attributes objectForKey:@"href"]];
 					[button addTarget:self action:@selector(onButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
 					[button addTarget:self action:@selector(onButtonTouchUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
 					[button addTarget:self action:@selector(onButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -659,7 +659,7 @@
 	
 	if ([self.delegate respondsToSelector:@selector(rtLabel:didSelectLinkWithURL:)])
 	{
-		[self.delegate rtLabel:self didSelectLinkWithURL:button.url];
+		[self.delegate rtLabel:self didSelectLinkWithURL:button.urlString];
 	}
 }
 

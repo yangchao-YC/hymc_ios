@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class FMResultSet;
 
 @interface FileModel : NSObject
 
@@ -16,4 +17,5 @@
 @property(strong,nonatomic)NSString *href;     //文件连接地址
 @property(strong,nonatomic)NSString *filename; //文件名称
 - (id)initWithDictionary:(NSDictionary *)dataDic dataid:(NSString *)dataid_;
+- (id)initWithFMResultSet:(FMResultSet *)rs;
 @end

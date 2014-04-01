@@ -86,6 +86,10 @@
     header.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
         // 进入刷新状态就会回调这个Block
         
+        //加载缓存数据
+        self.dynamicDataArray = [DatabaseManager getDynamicListByWeiboType:@"allmsg"];
+        
+        /*
         //开始网络请求
         NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"]];
         id a = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -100,6 +104,7 @@
         
         //网络请求成功后，缓存数据
         [DatabaseManager saveDynamicList:self.dynamicDataArray];
+        */
         
         [self.dynamicTableView reloadData];
         [_header endRefreshing];
@@ -167,5 +172,11 @@
     return [cell height];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DynamicModel *dynamicModel = [self.dynamicDataArray objectAtIndex:indexPath.row];
+    
+    NSLog(@"%@",dynamicModel);
+}
 
 @end

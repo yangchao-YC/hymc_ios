@@ -7,6 +7,7 @@
 //
 
 #import "FileModel.h"
+#import "FMResultSet.h"
 
 @implementation FileModel
 - (id)initWithDictionary:(NSDictionary *)dataDic dataid:(NSString *)dataid_
@@ -15,6 +16,17 @@
         self.dataid =     dataid_;
         self.filename =   [dataDic objectForKey:@"filename"];
         self.href =       [dataDic objectForKey:@"href"];
+    }
+    
+    return self;
+}
+
+- (id)initWithFMResultSet:(FMResultSet *)rs
+{
+    if (self=[super init]) {
+        self.dataid =     [rs objectForColumnName:@"dataid"];
+        self.filename =   [rs objectForColumnName:@"filename"];
+        self.href =       [rs objectForColumnName:@"href"];
     }
     
     return self;

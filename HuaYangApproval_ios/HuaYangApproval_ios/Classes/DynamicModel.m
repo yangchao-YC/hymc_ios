@@ -9,6 +9,8 @@
 #import "DynamicModel.h"
 #import "FileModel.h"
 #import "ReplyModel.h"
+#import "FMResultset.h"
+#import "DatabaseManager.h"
 
 @implementation DynamicModel
 - (id)initWithDictionary:(NSDictionary *)dataDic weiboType:(NSString *)weiboType_
@@ -43,6 +45,32 @@
             FileModel *fileModel = [[FileModel alloc] initWithDictionary:file_ dataid:self.dataid];
             [self.files addObject:fileModel];
         }
+    }
+    
+    return self;
+}
+
+- (id)initWithFMResultSet:(FMResultSet *)rs
+{
+    if (self=[super init]) {
+        self.weiboType =    [rs objectForColumnName:@"weiboType"];
+        self.dataid =       [rs objectForColumnName:@"dataid"];
+        self.upicture =     [rs objectForColumnName:@"upicture"];
+        self.uid =          [rs objectForColumnName:@"uid"];
+        self.authorid =     [rs objectForColumnName:@"authorid"];
+        self.authorname =   [rs objectForColumnName:@"authorname"];
+        self.content =      [rs objectForColumnName:@"content"];
+        
+        self.dateTime =     [rs objectForColumnName:@"dateTime"];
+        self.praise =       [rs objectForColumnName:@"praise"];
+        self.praiseNumber = [rs objectForColumnName:@"praiseNumber"];
+        self.replysNumber = [rs objectForColumnName:@"replysNumber"];
+        self.iscollect =    [rs objectForColumnName:@"iscollect"];
+        
+        self.replys = [DatabaseManager getReplyListByDynamicID:self.dataid];
+        
+        self.files = [DatabaseManager getFileListByDataID:self.dataid];
+        
     }
     
     return self;

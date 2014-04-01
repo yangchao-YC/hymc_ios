@@ -56,10 +56,26 @@ static NSString *cacheDBName = @"cache.db";
     
 }
 
+//测试用方法
++ (void)deleteAllWeibo
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:[[DOCUMENTPATH stringByAppendingPathComponent:userID] stringByAppendingPathComponent:cacheDBName]];
+    if ([db open]) {
+        [db beginDeferredTransaction];
+        
+        [db executeUpdate:@"DROP TABLE IF EXISTS dynamic"];
+        [db executeUpdate:@"DROP TABLE IF EXISTS reply"];
+        [db executeUpdate:@"DROP TABLE IF EXISTS file"];
+        
+        [db commit];
+        [db close];
+    }
+}
+
 #pragma mark ------保存动态列表
-static NSString *dynamicSQL = @"CREATE TABLE dynamic (id INTEGER PRIMARY KEY AUTOINCREMENT, weiboType TEXT, dataid TEXT, upicture TEXT, uid TEXT, authorid TEXT, authorname TEXT, content TEXT, dateTime NUMERIC, praise BOOLEAN, praiseNumber INTEGER, replysNumber INTEGER, iscollect BOOLEAN);";
-static NSString *replySQL = @"CREATE TABLE reply (id INTEGER PRIMARY KEY AUTOINCREMENT, dynamicid TEXT, dataid TEXT, upicture TEXT, uid TEXT, uname TEXT, content TEXT, dateTime NUMERIC);";
-static NSString *fileSQL = @"CREATE TABLE file (id INTEGER PRIMARY KEY AUTOINCREMENT, dataid TEXT, href TEXT, filename TEXT);";
+static NSString *dynamicSQL = @"CREATE TABLE IF NOT EXISTS dynamic (id INTEGER PRIMARY KEY AUTOINCREMENT, weiboType TEXT, dataid TEXT, upicture TEXT, uid TEXT, authorid TEXT, authorname TEXT, content TEXT, dateTime NUMERIC, praise BOOLEAN, praiseNumber INTEGER, replysNumber INTEGER, iscollect BOOLEAN);";
+static NSString *replySQL = @"CREATE TABLE IF NOT EXISTS reply (id INTEGER PRIMARY KEY AUTOINCREMENT, dynamicid TEXT, dataid TEXT, upicture TEXT, uid TEXT, uname TEXT, content TEXT, dateTime NUMERIC);";
+static NSString *fileSQL = @"CREATE TABLE IF NOT EXISTS file (id INTEGER PRIMARY KEY AUTOINCREMENT, dataid TEXT, href TEXT, filename TEXT);";
 
 static NSString *dynamicSqlString = @"INSERT INTO dynamic (weiboType,dataid,upicture,uid,authorid,authorname,content,dateTime,praise,praiseNumber,replysNumber,iscollect) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 NSString *replySqlString = @"INSERT INTO reply (dynamicid,dataid,upicture,uid,uname,content,dateTime) VALUES (?,?,?,?,?,?,?);";
@@ -68,6 +84,10 @@ NSString *fileSqlString = @"INSERT INTO file (dataid,href,filename) VALUES (?,?,
 + (void)saveDynamicList:(NSArray *)dynamicList
 {
     [[DatabaseManager class] checkCachePath];
+    
+    //测试用
+    [[DatabaseManager class] deleteAllWeibo];
+    
     [[DatabaseManager class] checkTableExist:@"dynamic" createTableSQL:dynamicSQL];
     [[DatabaseManager class] checkTableExist:@"reply" createTableSQL:replySQL];
     [[DatabaseManager class] checkTableExist:@"file" createTableSQL:fileSQL];
@@ -100,11 +120,61 @@ NSString *fileSqlString = @"INSERT INTO file (dataid,href,filename) VALUES (?,?,
 #pragma mark ------通过微博类型查询动态列表
 + (id)getDynamicListByWeiboType:(NSString *)weiboType_
 {
-    [[DatabaseManager class] checkCachePath];
+    NSMutableArray *dynamicList = [NSMutableArray array];
     
     NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM dynamic WHERE weiboType = '%@'",weiboType_];
+    FMDatabase *db = [FMDatabase databaseWithPath:[[DOCUMENTPATH stringByAppendingPathComponent:userID] stringByAppendingPathComponent:cacheDBName]];
+    if ([db open]) {
+        FMResultSet *rs = [db executeQuery:sqlString];
+        while ([rs next]) {
+            DynamicModel *dynamicModel = [[DynamicModel alloc] initWithFMResultSet:rs];
+            [dynamicList addObject:dynamicModel];
+        }
+        
+        [db close];
+    }
 
-    return nil;
+    return dynamicList;
+}
+
+#pragma mark ------通过微博id查询微博回复列表
++ (id)getReplyListByDynamicID:(NSString *)dynamicID_
+{
+    NSMutableArray *replyList = [NSMutableArray array];
+    
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM reply WHERE dynamicid = '%@'",dynamicID_];
+    FMDatabase *db = [FMDatabase databaseWithPath:[[DOCUMENTPATH stringByAppendingPathComponent:userID] stringByAppendingPathComponent:cacheDBName]];
+    if ([db open]) {
+        FMResultSet *rs = [db executeQuery:sqlString];
+        while ([rs next]) {
+            ReplyModel *replyModel = [[ReplyModel alloc] initWithFMResultSet:rs];
+            [replyList addObject:replyModel];
+        }
+        
+        [db close];
+    }
+    
+    return replyList;
+}
+
+#pragma mark ------通过 dataid 查询文件列表
++ (id)getFileListByDataID:(NSString *)dataID_
+{
+    NSMutableArray *fileList = [NSMutableArray array];
+    
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM file WHERE dataid = '%@'",dataID_];
+    FMDatabase *db = [FMDatabase databaseWithPath:[[DOCUMENTPATH stringByAppendingPathComponent:userID] stringByAppendingPathComponent:cacheDBName]];
+    if ([db open]) {
+        FMResultSet *rs = [db executeQuery:sqlString];
+        while ([rs next]) {
+            FileModel *fileModel = [[FileModel alloc] initWithFMResultSet:rs];
+            [fileList addObject:fileModel];
+        }
+        
+        [db close];
+    }
+    
+    return fileList;
 }
 
 @end

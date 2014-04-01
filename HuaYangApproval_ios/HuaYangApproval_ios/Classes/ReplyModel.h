@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class FMResultSet;
 
 @interface ReplyModel : NSObject
 
@@ -23,4 +24,5 @@
 @property(strong,nonatomic)NSMutableArray *files;    //文件数组
 
 - (id)initWithDictionary:(NSDictionary *)dataDic dynamicid:(NSString *)dynamicid_;
+- (id)initWithFMResultSet:(FMResultSet *)rs;
 @end

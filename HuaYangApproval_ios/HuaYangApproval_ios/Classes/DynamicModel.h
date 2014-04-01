@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class FMResultSet;
 
 @interface DynamicModel : NSObject
 
@@ -33,4 +34,5 @@
 @property(strong,nonatomic)NSMutableArray *files; //文件数组
 
 - (id)initWithDictionary:(NSDictionary *)dataDic weiboType:(NSString *)weiboType_;
+- (id)initWithFMResultSet:(FMResultSet *)rs;
 @end

@@ -14,6 +14,10 @@
 #import "TSPopoverController.h"
 #import "DynamicCellPopoverContentView.h"
 
+@interface DynamicCell()<RTLabelDelegate>
+
+@end
+
 @implementation DynamicCell
 
 - (CGFloat)height
@@ -32,6 +36,7 @@
 - (void)awakeFromNib
 {
     self.contentRTLabel = [[RTLabel alloc] initWithFrame:CGRectMake(20,40,280,0)];
+    self.contentRTLabel.delegate = self;
     [self.contentRTLabel setParagraphReplacement:@""];
     [self.contentView addSubview:self.contentRTLabel];
     [self.contentRTLabel setBackgroundColor:[UIColor clearColor]];
@@ -42,6 +47,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSString *)urlString
+{
+    NSLog(@"%@",urlString);
 }
 
 - (IBAction)showPop:(id)sender forEvent:(UIEvent *)event
@@ -81,7 +91,7 @@
         for (NSString *str in array_at) {
             NSRange range = [originalStr rangeOfString:str];
             NSDictionary *info = [NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-            NSString *funUrlStr = [NSString stringWithFormat:@"<a href=%@><font face='HelveticaNeue-CondensedBold' size=16 color='#CCFF00'>%@</font></a>",[info objectForKey:@"uid"], [NSString stringWithFormat:@"@%@",[info objectForKey:@"uname"]]];
+            NSString *funUrlStr = [NSString stringWithFormat:@"<a href=%@><font face='HelveticaNeue-CondensedBold' size=16 color='#0000ff'>%@</font></a>",[info objectForKey:@"uid"], [NSString stringWithFormat:@"@%@",[info objectForKey:@"uname"]]];
             originalStr = [originalStr stringByReplacingCharactersInRange:NSMakeRange(range.location, [str length]) withString:funUrlStr];
         }
     }
@@ -90,7 +100,6 @@
     
 }
 
-;
     //NSString *text = originalStr;
     /*
     //解析http://短链接

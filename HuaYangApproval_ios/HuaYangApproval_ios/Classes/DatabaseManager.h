@@ -16,4 +16,13 @@
 //通过微博类型查询动态列表
 + (id)getDynamicListByWeiboType:(NSString *)weiboType_;
 
+//通过微博id查询微博回复列表
++ (id)getReplyListByDynamicID:(NSString *)dynamicID_;
+
+//通过 dataid 查询文件列表
++ (id)getFileListByDataID:(NSString *)dataID_;
+
+
+
+
 @end
