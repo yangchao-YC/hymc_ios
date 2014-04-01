@@ -11,6 +11,8 @@
 		3BA4439418E9A2B100134FF1 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4439318E9A2B100134FF1 /* DatabaseManager.m */; };
 		5B4951B4033043FB9020BA3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3142D1299C2A44C5AD41F132 /* libPods.a */; };
 		6E63767818EA9364009AF478 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63767718EA9364009AF478 /* LoginViewController.m */; };
+		6E63767C18EAB165009AF478 /* DynamicCellPopoverContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63767B18EAB165009AF478 /* DynamicCellPopoverContentView.m */; };
+		6E63767E18EAB179009AF478 /* DynamicCellPopoverContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E63767D18EAB179009AF478 /* DynamicCellPopoverContentView.xib */; };
 		6E809D6218E3EFB000511F53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E809D6118E3EFB000511F53 /* Foundation.framework */; };
 		6E809D6418E3EFB000511F53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E809D6318E3EFB000511F53 /* CoreGraphics.framework */; };
 		6E809D6618E3EFB000511F53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E809D6518E3EFB000511F53 /* UIKit.framework */; };
@@ -62,6 +64,9 @@
 		4E3CA5EBB4E94571A05674E9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6E63767618EA9364009AF478 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		6E63767718EA9364009AF478 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		6E63767A18EAB165009AF478 /* DynamicCellPopoverContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicCellPopoverContentView.h; sourceTree = "<group>"; };
+		6E63767B18EAB165009AF478 /* DynamicCellPopoverContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicCellPopoverContentView.m; sourceTree = "<group>"; };
+		6E63767D18EAB179009AF478 /* DynamicCellPopoverContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicCellPopoverContentView.xib; sourceTree = "<group>"; };
 		6E809D5E18E3EFB000511F53 /* HuaYangApproval_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuaYangApproval_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E809D6118E3EFB000511F53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6E809D6318E3EFB000511F53 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -150,6 +155,16 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		6E63767918EAB12F009AF478 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6E63767A18EAB165009AF478 /* DynamicCellPopoverContentView.h */,
+				6E63767B18EAB165009AF478 /* DynamicCellPopoverContentView.m */,
+				6E63767D18EAB179009AF478 /* DynamicCellPopoverContentView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		6E809D5518E3EFB000511F53 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +248,7 @@
 			children = (
 				3BA4439118E9A27F00134FF1 /* Utils */,
 				6EA8CA1E18E946DE003267E4 /* Models */,
+				6E63767918EAB12F009AF478 /* Views */,
 				6EA8CA0D18E92340003267E4 /* Cells */,
 				6EA8CA0C18E9232B003267E4 /* ViewControllers */,
 			);
@@ -401,6 +417,7 @@
 				6EAC6AAB18EA746900B5F2E7 /* MJRefresh.bundle in Resources */,
 				6EA8CA1D18E9436D003267E4 /* test.txt in Resources */,
 				6E809D7518E3EFB000511F53 /* Main.storyboard in Resources */,
+				6E63767E18EAB179009AF478 /* DynamicCellPopoverContentView.xib in Resources */,
 				3BA4439018E997C500134FF1 /* DynamicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +486,7 @@
 				6EAC6AAC18EA746900B5F2E7 /* MJRefreshBaseView.m in Sources */,
 				6EAC6AAE18EA746900B5F2E7 /* MJRefreshFooterView.m in Sources */,
 				6E809DA218E3F55A00511F53 /* NewsViewController.m in Sources */,
+				6E63767C18EAB165009AF478 /* DynamicCellPopoverContentView.m in Sources */,
 				6E809DA818E400CF00511F53 /* NewDynamicViewController.m in Sources */,
 				6EA8CA1018E9236A003267E4 /* DynamicCell.m in Sources */,
 				3BA4439418E9A2B100134FF1 /* DatabaseManager.m in Sources */,

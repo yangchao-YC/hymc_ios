@@ -12,6 +12,7 @@
 #import "RTLabel.h"
 
 #import "TSPopoverController.h"
+#import "DynamicCellPopoverContentView.h"
 
 @implementation DynamicCell
 
@@ -30,7 +31,7 @@
 
 - (void)awakeFromNib
 {
-    self.contentRTLabel = [[RTLabel alloc] initWithFrame:CGRectMake(20,40,300,0)];
+    self.contentRTLabel = [[RTLabel alloc] initWithFrame:CGRectMake(20,40,280,0)];
     [self.contentRTLabel setParagraphReplacement:@""];
     [self.contentView addSubview:self.contentRTLabel];
     [self.contentRTLabel setBackgroundColor:[UIColor clearColor]];
@@ -45,16 +46,12 @@
 
 - (IBAction)showPop:(id)sender forEvent:(UIEvent *)event
 {
-    UITableViewController *tableViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    tableViewController.view.frame = CGRectMake(0,0, 200, 100);
-    tableViewController.view.backgroundColor = [UIColor clearColor];
-    TSPopoverController *popoverController = [[TSPopoverController alloc] initWithContentViewController:tableViewController];
+    DynamicCellPopoverContentView *popoverContentView = [[[NSBundle mainBundle] loadNibNamed:@"DynamicCellPopoverContentView" owner:self options:nil] lastObject];
+    TSPopoverController *popoverController = [[TSPopoverController alloc] initWithView:popoverContentView];
     
-    popoverController.cornerRadius = 5;
-    //popoverController.titleText = @"change order";
-    popoverController.popoverBaseColor = [UIColor orangeColor];
+    popoverController.cornerRadius = 1;
+    popoverController.popoverBaseColor = [UIColor greenColor];
     popoverController.popoverGradient= NO;
-    //    popoverController.arrowPosition = TSPopoverArrowPositionHorizontal;
     [popoverController showPopoverWithTouch:event];
 }
 
@@ -62,7 +59,7 @@
 {
     self.authornameLabel.text = dynamicModel.authorname;
     self.dateTimeLabel.text = [dynamicModel.dateTime stringValue];
-    self.contentRTLabel.text = dynamicModel.content;//[self transformString:dynamicModel.content];
+    self.contentRTLabel.text = [self transformString:dynamicModel.content];
     
     CGSize optimumSize = [self.contentRTLabel optimumSize];
 	CGRect frame = [self.contentRTLabel frame];
@@ -77,28 +74,23 @@
 
 - (NSString *)transformString:(NSString *)originalStr
 {
-    NSMutableString *text = [NSMutableString string];
-    int startIndex = -1;
-    for (int i=0; i<originalStr.length; i++) {
-        NSString *s = [originalStr substringWithRange:NSMakeRange(i, 1)];
-        if ([s isEqualToString:@"{"]) {
-            startIndex = i;
+    //解析@
+    NSString *regex_at = @"\\{[^}]*\\}";//@的正则表达式
+    NSArray *array_at = [originalStr componentsMatchedByRegex:regex_at];
+    if ([array_at count]) {
+        for (NSString *str in array_at) {
+            NSRange range = [originalStr rangeOfString:str];
+            NSDictionary *info = [NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+            NSString *funUrlStr = [NSString stringWithFormat:@"<a href=%@><font face='HelveticaNeue-CondensedBold' size=16 color='#CCFF00'>%@</font></a>",[info objectForKey:@"uid"], [NSString stringWithFormat:@"@%@",[info objectForKey:@"uname"]]];
+            originalStr = [originalStr stringByReplacingCharactersInRange:NSMakeRange(range.location, [str length]) withString:funUrlStr];
         }
-        
-        if (startIndex < 0) {
-            [text appendString:s];
-        }
-        
-        if ([s isEqualToString:@"}"]) {
-            if (startIndex > -1) {
-                NSLog(@"%@",[originalStr substringWithRange:NSMakeRange(startIndex, i-startIndex)]);
-                startIndex = -1;
-            }
-        }
-        
-        i++;
     }
     
+    return originalStr;
+    
+}
+
+;
     //NSString *text = originalStr;
     /*
     //解析http://短链接
@@ -179,8 +171,6 @@
     }
      */
     //返回转义后的字符串
-    return text;
-}
 
 
 @end

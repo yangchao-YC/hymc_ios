@@ -70,11 +70,9 @@
     tableViewController.view.backgroundColor = [UIColor clearColor];
     TSPopoverController *popoverController = [[TSPopoverController alloc] initWithContentViewController:tableViewController];
     
-    popoverController.cornerRadius = 5;
-    //popoverController.titleText = @"change order";
+    popoverController.cornerRadius = 1;
     popoverController.popoverBaseColor = [UIColor orangeColor];
     popoverController.popoverGradient= NO;
-    //    popoverController.arrowPosition = TSPopoverArrowPositionHorizontal;
     [popoverController showPopoverWithTouch:event];
 }
 
@@ -144,7 +142,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  20;//self.dynamicDataArray.count;
+    return self.dynamicDataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,7 +153,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:dynamicCellId owner:self options:nil] lastObject];
     }
     
-    DynamicModel *dynamicModel = [self.dynamicDataArray objectAtIndex:0];//[self.dynamicDataArray objectAtIndex:indexPath.row];
+    DynamicModel *dynamicModel = [self.dynamicDataArray objectAtIndex:indexPath.row];
     [cell setDynamicData:dynamicModel];
     
     return cell;
