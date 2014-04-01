@@ -11,6 +11,8 @@
 #import "RegexKitLite.h"
 #import "RTLabel.h"
 
+#import "TSPopoverController.h"
+
 @implementation DynamicCell
 
 - (CGFloat)height
@@ -39,6 +41,21 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)showPop:(id)sender forEvent:(UIEvent *)event
+{
+    UITableViewController *tableViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    tableViewController.view.frame = CGRectMake(0,0, 200, 100);
+    tableViewController.view.backgroundColor = [UIColor clearColor];
+    TSPopoverController *popoverController = [[TSPopoverController alloc] initWithContentViewController:tableViewController];
+    
+    popoverController.cornerRadius = 5;
+    //popoverController.titleText = @"change order";
+    popoverController.popoverBaseColor = [UIColor orangeColor];
+    popoverController.popoverGradient= NO;
+    //    popoverController.arrowPosition = TSPopoverArrowPositionHorizontal;
+    [popoverController showPopoverWithTouch:event];
 }
 
 - (void)setDynamicData:(DynamicModel *)dynamicModel

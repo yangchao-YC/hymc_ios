@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnReply;
 @property (weak, nonatomic) IBOutlet UIButton *btnPraise;
 
+- (IBAction)showPop:(id)sender forEvent:(UIEvent *)event;
+
 - (void)setDynamicData:(DynamicModel *)dynamicModel;
 - (CGFloat)height;
 @end
