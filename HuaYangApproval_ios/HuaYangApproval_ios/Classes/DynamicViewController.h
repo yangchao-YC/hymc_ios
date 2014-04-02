@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DynamicViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *dynamicTableView;
 
 @end

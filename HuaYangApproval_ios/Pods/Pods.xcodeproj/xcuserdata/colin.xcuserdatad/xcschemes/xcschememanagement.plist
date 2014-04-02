@@ -14,20 +14,25 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>Pods-RegexKitLite.xcscheme</key>
+		<key>Pods-RTLabel.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>Pods-SDWebImage.xcscheme</key>
+		<key>Pods-RegexKitLite.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>Pods-TSPopover.xcscheme</key>
+		<key>Pods-SDWebImage.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>6</integer>
+		</dict>
+		<key>Pods-TSPopover.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>74B3CC8E32D8452B86B06BF9</key>
+		<key>057B7EF776FF40EFAE45B46D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7FAEC2CB500D4641A54EFFFB</key>
+		<key>106ABB56E3714B7787A84A08</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3C3ED5458864161B3471999</key>
+		<key>2CC67EC6C06D4A6C96849B43</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BCE7A5CD6B23465F9E85E46B</key>
+		<key>382E4C55F9CD492DB33DE3A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EAEA4BCB97CF4A15BF34485D</key>
+		<key>902E2015F26B4DA4AC028A4B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC30A91B6D8F4339842BBEB4</key>
+		<key>9D584D3BB278400D879F7EFB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC7A4856A935439D968BBBEE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
