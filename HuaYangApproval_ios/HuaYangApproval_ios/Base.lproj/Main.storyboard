@@ -5,6 +5,21 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
+        <!--Dynamic Detail View Controller - 微博正文-->
+        <scene sceneID="6yw-fm-dJR">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Kf6-8p-oFe" customClass="DynamicDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qfi-dR-ba7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="微博正文" id="Q1O-2M-rKO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dE8-DS-GmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="439" y="-1591"/>
+        </scene>
         <!--Navigation Controller - 动态-->
         <scene sceneID="yDV-3q-Mqq">
             <objects>
@@ -21,9 +36,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLZ-SI-FoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-542" y="-1159"/>
+            <point key="canvasLocation" x="-542" y="-1591"/>
         </scene>
-        <!--Dynamic View Controller - Title-->
+        <!--Dynamic View Controller - 动态-->
         <scene sceneID="fBn-Vg-MSx">
             <objects>
                 <viewController id="ZUP-lN-eOp" customClass="DynamicViewController" sceneMemberID="viewController">
@@ -49,7 +64,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="动态" id="AXG-gQ-I8i"/>
-                    <navigationItem key="navigationItem" title="Title" id="kiD-dV-YXL">
+                    <navigationItem key="navigationItem" title="动态" id="kiD-dV-YXL">
                         <barButtonItem key="leftBarButtonItem" title="写微博" id="TC7-CG-Nqa">
                             <connections>
                                 <segue destination="eya-8I-4hr" kind="modal" id="5Pr-6K-ZWS"/>
@@ -58,11 +73,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dynamicTableView" destination="0E9-Qn-Hvk" id="Tka-ye-gaU"/>
+                        <segue destination="Kf6-8p-oFe" kind="push" identifier="DynamicDetailPush" id="Yni-5w-Jza"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5D-KJ-bri" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-132" y="-1159"/>
+            <point key="canvasLocation" x="-124" y="-1591"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u8f-aI-f2m">
@@ -77,7 +93,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LY8-HP-ckd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="291" y="-1159"/>
+            <point key="canvasLocation" x="439" y="-2311"/>
         </scene>
         <!--New Dynamic View Controller - 写微博-->
         <scene sceneID="Wi0-sl-gCZ">
@@ -92,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="roq-ma-raS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="739" y="-1159"/>
+            <point key="canvasLocation" x="859" y="-2311"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="I5Y-ZM-MTJ">
