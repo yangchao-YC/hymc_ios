@@ -44,6 +44,7 @@
 		6EAC6AAD18EA746900B5F2E7 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAC6AA618EA746900B5F2E7 /* MJRefreshConst.m */; };
 		6EAC6AAE18EA746900B5F2E7 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAC6AA818EA746900B5F2E7 /* MJRefreshFooterView.m */; };
 		6EAC6AAF18EA746900B5F2E7 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAC6AAA18EA746900B5F2E7 /* MJRefreshHeaderView.m */; };
+		6EFD774118EBB6F90008BFF4 /* DynamicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD774018EBB6F90008BFF4 /* DynamicDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,8 @@
 		6EAC6AA818EA746900B5F2E7 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
 		6EAC6AA918EA746900B5F2E7 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
 		6EAC6AAA18EA746900B5F2E7 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		6EFD773F18EBB6F90008BFF4 /* DynamicDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicDetailViewController.h; sourceTree = "<group>"; };
+		6EFD774018EBB6F90008BFF4 /* DynamicDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +273,8 @@
 				6E63767718EA9364009AF478 /* LoginViewController.m */,
 				6E809D9718E3F4ED00511F53 /* DynamicViewController.h */,
 				6E809D9818E3F4ED00511F53 /* DynamicViewController.m */,
+				6EFD773F18EBB6F90008BFF4 /* DynamicDetailViewController.h */,
+				6EFD774018EBB6F90008BFF4 /* DynamicDetailViewController.m */,
 				6E809D9A18E3F51900511F53 /* WillDoViewController.h */,
 				6E809D9B18E3F51900511F53 /* WillDoViewController.m */,
 				6E809D9D18E3F53600511F53 /* TaskViewController.h */,
@@ -489,6 +494,7 @@
 				6E63767C18EAB165009AF478 /* DynamicCellPopoverContentView.m in Sources */,
 				6E809DA818E400CF00511F53 /* NewDynamicViewController.m in Sources */,
 				6EA8CA1018E9236A003267E4 /* DynamicCell.m in Sources */,
+				6EFD774118EBB6F90008BFF4 /* DynamicDetailViewController.m in Sources */,
 				3BA4439418E9A2B100134FF1 /* DatabaseManager.m in Sources */,
 				6E809DA518E3F58100511F53 /* MineViewController.m in Sources */,
 			);
